@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expire Chat</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Expire Chat</h1>
+      <p class="lead">Create Chat Room or Search Chat Room.</p>
+      <form action="chat/create" method="post" role="form">
+        <button class="btn btn-lg btn-default" type="submit">Create</button>
+      </form>
+
+      <form action="/chat/search" method="post" role="form">
+        <h2>Please Chat Room ID</h2>
+        <input type="text" name="room_id" placeholder="Chat Room ID">
+        <button class="btn btn-lg btn-default" type="submit">Search</button>
+      </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

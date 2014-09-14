@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Expire Chat</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style type="text/css">
+      .mate {
+        color: #999999;
+        font-size: 0.9em;
+      }
+      .chat-time {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Expire Chat</h1>
+      <h2>Room ID: <%= @room.id %></h2>
+      <h2>Remaining Time: <span name="remainingtime"></span></h2>
+      <div class="input-group">
+        <form action="/chat/post" method="post" role="form">
+          <input type="hidden" name="room_id" value="<%= @room.id %>">
+          <input type="text" class="form-control" name="message" placeholder="Input Text">
+          <button class="btn btn-lg btn-default" type="submit">Post</button>
+        </form>
+      </div>
+      <ul class="unstyled row-fluid">
+        <% @posts.each do |post| %>
+          <li class="well well-small">
+            <div>
+              <i class="icon-user"></i>
+              <small class="meta chat-time"></small>
+              <div><%= post.message %></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+      </p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      (function () {
+        var remainingTime = <%= @room.remaining_time %>;
+        var element = document.getElementsByName('remainingtime')[0];
+        element.innerHTML = ("0" + Math.floor(remainingTime / 60)).substr(-2) + ":" + ("0" + remainingTime % 60).substr(-2);
+      })();
+    </script>
+  </body>
+</html>
